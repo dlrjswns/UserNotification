@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
+    //앱을 구성하는데 필요한 클래스나 리소스들을 메모리에 올리고 모바일 디바이스에 첫화면을 띄우기 직전에 실행
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        print("dtd")
+        if #available(iOS 10.0, *){
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {(allow, e) in })
+        }else{}
         return true
     }
 
